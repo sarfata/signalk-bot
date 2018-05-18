@@ -12,7 +12,7 @@ const n2kSignalk = require('@signalk/n2k-signalk');
 require('dotenv').config()
 const port = process.env.PORT || 3000
 const botToken = process.env.BOTTOKEN;
-const botDebug = toBoolean(process.env.BOTDEBUG);
+const botDebug = toBoolean(process.env.BOTDEBUG || "false");
 
 const nmeaParser = new NMEA0183Parser()
 
