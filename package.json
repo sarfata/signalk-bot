@@ -1,0 +1,19 @@
+{
+  "name": "signalk-bot",
+  "version": "0.0.1",
+  "description": "A bot for SignalK Slack group.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Thomas Sarlandie",
+  "license": "MIT",
+  "homepage": "https://github.com/sarfata/signalkbot#readme",
+  "dependencies": {
+    "@signalk/n2k-signalk": "^1.3.0",
+    "@signalk/nmea0183-signalk": "^2.3.0",
+    "botkit": "^0.6.14",
+    "canboatjs": "github:canboat/canboatjs",
+    "dotenv": "^5.0.1"
+  }
+}
