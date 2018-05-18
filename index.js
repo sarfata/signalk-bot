@@ -59,7 +59,7 @@ controller.hears(['convert (.*)'], 'direct_message,direct_mention,mention', (bot
   // Search for a NMEA0183 sentence in the message
   var matches;
   if ((matches = data.match(nmea2000PcdinRegexp))!=null || (matches=data.match(nmea2000ActisenseRegexp)) != null) {
-    matches = matches[1];
+    data = matches[1];
 
     // Unrecognized sentences do not trigger an error so we use a timeout to catch them.
     var timeout = setTimeout(() => {
