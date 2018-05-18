@@ -7,7 +7,7 @@ message to SignalK.
 
 For example, say:
 
-    Hey signalkbot, convert 
+    Hey signalkbot, convert $SDDBT,17.0,f,5.1,M,2.8,F*3E
     
 Or for NMEA2000, you can say:
 
