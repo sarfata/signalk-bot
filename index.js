@@ -3,6 +3,7 @@
 var Botkit = require('botkit');
 var express = require('express');
 var request = require('request');
+var toBoolean = require('to-boolean')
 const NMEA0183Parser = require('@signalk/nmea0183-signalk')
 const CanBoatJS = require('canboatjs').FromPgn
 const n2kSignalk = require('@signalk/n2k-signalk');
@@ -11,6 +12,7 @@ const n2kSignalk = require('@signalk/n2k-signalk');
 require('dotenv').config()
 const port = process.env.PORT || 3000
 const botToken = process.env.BOTTOKEN;
+const botDebug = toBoolean(process.env.BOTDEBUG);
 
 const nmeaParser = new NMEA0183Parser()
 
@@ -26,7 +28,7 @@ app.post('/tosignalk', function(req, res) {
 });
 
 var controller = Botkit.slackbot({
-  debug: true
+  debug: botDebug
 });
 
 var bot = controller.spawn({
