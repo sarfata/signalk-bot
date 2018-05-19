@@ -18,5 +18,9 @@ or
     convert 2017-04-15T14:57:58.471Z,3,126208,204,172,21,00,00,ef,01,ff,ff,ff,ff,ff,ff,04,01,3b,07,03,04,04,5c,05,0f,ff
 
 
+The SignalK bot can also use the [KBox](https://github.com/sarfata/kbox-firmware) algorithms to convert messages to SignalK. Just use the word `convertkbox` instead of `convert`:
+
+    convertkbox $PCDIN,01F119,00000000,0F,2AAF00D1067414FF*59
+
 To join the SignalK Dev group on slack, follow instructions
 [here](http://slack-invite.signalk.org/).

@@ -53,6 +53,10 @@ controller.hears(['hello', 'hi'], 'direct_message,direct_mention,mention', (bot,
   bot.reply(message, "Hello!");
 });
 
+controller.hears(['help', 'usage', 'what is you do', 'wtf'], 'direct_message,direct_mention,mention', (bot, message) => {
+  bot.reply(message, "Ask me to _convert_ NMEA0183 sentences or NMEA2000 messages into SignalK. For more info, see https://github.com/sarfata/signalk-bot/");
+});
+
 const nmea0183regexp = /(\$.*\*[a-zA-Z0-9]{2})/
 const nmea2000PcdinRegexp = /(\$PCDIN.*\*[a-zA-Z0-9]{2})/
 
