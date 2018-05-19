@@ -8,6 +8,10 @@ const NMEA0183Parser = require('@signalk/nmea0183-signalk')
 const CanBoatJS = require('canboatjs').FromPgn
 const n2kSignalk = require('@signalk/n2k-signalk');
 
+// This is an emscripten module.
+const kboxSignalk = require('./sktool.js');
+const sktoolConvert = kboxSignalk.cwrap('sktoolConvert', 'string', [ 'string' ]);
+
 // Load configuration
 require('dotenv').config()
 const port = process.env.PORT || 3000
@@ -102,6 +106,27 @@ controller.hears(['convert (.*)'], 'direct_message,direct_mention,mention', (bot
     .catch(error => {
       bot.reply(message, "@signalk/nmea0183-signalk was not able to convert `" + data + "`:\n*" + error.message + "*");
     });
+  }
+  else {
+    bot.reply(message, "I am not sure what to do with " + message.match[1]);
+  }
+})
+
+controller.hears(['convertkbox (.*)'], 'direct_message,direct_mention,mention', (bot, message) => {
+  var data = message.match[1];
+
+  // Search for a NMEA0183 sentence in the message
+  var matches;
+  if ((matches = data.match(nmea2000PcdinRegexp))!=null || (matches=data.match(nmea2000ActisenseRegexp)) != null) {
+    data = matches[1];
+    var output = sktoolConvert(data);
+    bot.reply(message, `\`${data}\` converts via KBox-SignalK library to:\`\`\`${ output }\`\`\``);
+  } 
+  else if (data.match(nmea0183regexp)) {
+    // keep only the nmea sentence
+    data = data.match(nmea0183regexp)[1];
+    var output = sktoolConvert(data);
+    bot.reply(message, `\`${data}\` converts via KBox-SignalK library to:\`\`\`${ output }\`\`\``);
   }
   else {
     bot.reply(message, "I am not sure what to do with " + message.match[1]);
