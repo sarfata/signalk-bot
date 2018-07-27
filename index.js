@@ -57,7 +57,7 @@ controller.hears(['help', 'usage', 'what is you do', 'wtf'], 'direct_message,dir
   bot.reply(message, "Ask me to _convert_ NMEA0183 sentences or NMEA2000 messages into SignalK. For more info, see https://github.com/sarfata/signalk-bot/");
 });
 
-const nmea0183regexp = /(\$.*\*[a-zA-Z0-9]{2})/
+const nmea0183regexp = /([$!].*\*[a-zA-Z0-9]{2})/
 const nmea2000PcdinRegexp = /(\$PCDIN.*\*[a-zA-Z0-9]{2})/
 
 //2017-04-15T14:57:58.471Z,3,126208,204,172,21,00,00,ef,01,ff,ff,ff,ff,ff,ff,04,01,3b,07,03,04,04,5c,05,0f,ff
@@ -94,13 +94,13 @@ controller.hears(['convert (.*)'], 'direct_message,direct_mention,mention', (bot
     parser.on('error', errorFn)
 
     parser.parseString(data)
-  } 
+  }
   else if (data.match(nmea0183regexp)) {
     // keep only the nmea sentence
     data = data.match(nmea0183regexp)[1];
     nmeaParser.parse(data).then(result => {
       if (result) {
-        bot.reply(message, "According to @signalk/nmea0183-signalk, `" + data 
+        bot.reply(message, "According to @signalk/nmea0183-signalk, `" + data
         + "` converts to \n```" + JSON.stringify(result.delta) + "```");
       }
       else {
@@ -116,7 +116,7 @@ controller.hears(['convert (.*)'], 'direct_message,direct_mention,mention', (bot
   }
 })
 
-controller.hears(['convertkbox (.*)'], 'direct_message,direct_mention,mention', (bot, message) => {
+controller.hears(['convert.*kbox (.*)'], 'direct_message,direct_mention,mention', (bot, message) => {
   var data = message.match[1];
 
   // Search for a NMEA0183 sentence in the message
@@ -125,7 +125,7 @@ controller.hears(['convertkbox (.*)'], 'direct_message,direct_mention,mention', 
     data = matches[1];
     var output = sktoolConvert(data);
     bot.reply(message, `\`${data}\` converts via KBox-SignalK library to:\`\`\`${ output }\`\`\``);
-  } 
+  }
   else if (data.match(nmea0183regexp)) {
     // keep only the nmea sentence
     data = data.match(nmea0183regexp)[1];
