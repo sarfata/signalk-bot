@@ -1712,7 +1712,7 @@ var ASM_CONSTS = [];
 
 STATIC_BASE = GLOBAL_BASE;
 
-STATICTOP = STATIC_BASE + 31632;
+STATICTOP = STATIC_BASE + 31600;
 /* global initializers */  __ATINIT__.push({ func: function() { __GLOBAL__I_000101() } }, { func: function() { __GLOBAL__sub_I_KBoxLogging_cpp() } }, { func: function() { __GLOBAL__sub_I_SKContext_cpp() } }, { func: function() { __GLOBAL__sub_I_SKJSONVisitor_cpp() } }, { func: function() { __GLOBAL__sub_I_SKNMEA2000Converter_cpp() } }, { func: function() { __GLOBAL__sub_I_SKNMEA2000Parser_cpp() } }, { func: function() { __GLOBAL__sub_I_SKNMEAConverter_cpp() } }, { func: function() { __GLOBAL__sub_I_SKNMEAParser_cpp() } }, { func: function() { __GLOBAL__sub_I_SKPath_cpp() } }, { func: function() { __GLOBAL__sub_I_SKSource_cpp() } }, { func: function() { __GLOBAL__sub_I_SKValue_cpp() } }, { func: function() { __GLOBAL__sub_I_SKVisitor_generated_cpp() } }, { func: function() { __GLOBAL__sub_I_main_cpp() } }, { func: function() { __GLOBAL__sub_I_iostream_cpp() } });
 
 
@@ -1721,7 +1721,7 @@ STATICTOP = STATIC_BASE + 31632;
 
 
 
-var STATIC_BUMP = 31632;
+var STATIC_BUMP = 31600;
 Module["STATIC_BASE"] = STATIC_BASE;
 Module["STATIC_BUMP"] = STATIC_BUMP;
 
